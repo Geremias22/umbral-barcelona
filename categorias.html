@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Categorías — Umbral Barcelona</title>
+
+  <!-- Tipografías opcionales -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Estilos globales + específicos -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/categorias.css" />
+</head>
+<body>
+  <!-- Header universal -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Inicio Umbral Barcelona">
+        <svg class="brand__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2c-3.6 0-6.5 2.9-6.5 6.5 0 4.9 6.5 13 6.5 13s6.5-8.1 6.5-13C18.5 4.9 15.6 2 12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="8.5" r="1.8" fill="currentColor"/>
+        </svg>
+        <span class="brand__name">Umbral BCN</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Navegación principal">
+        <a href="mapa.html">Mapa</a>
+        <a href="planes.html">Planes alternativos</a>
+        <a href="categorias.html" aria-current="page">Categorías</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="sobre.html">Sobre nosotros</a>
+      </nav>
+
+      <div class="nav__cta">
+        <button class="btn btn-outline" type="button" data-open="auth" data-view="login">login <span aria-hidden="true">👤</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <!-- Barra de título + buscador -->
+      <div class="cats-toolbar">
+        <h1 class="hero__title">Categorías</h1>
+
+        <form class="searchbar searchbar--compact" role="search" aria-label="Buscar por categoría o nombre">
+          <input class="searchbar__input" type="search" placeholder="Buscar categorías…" />
+          <button class="btn btn-accent searchbar__btn" type="submit" aria-label="Buscar">🔎</button>
+        </form>
+      </div>
+
+      <!-- Fila de chips (filtros rápidos) -->
+      <div class="cats-chips" aria-label="Filtros rápidos">
+        <!-- Cada chip es un checkbox invisible + label -->
+        <input id="ch-foto" type="checkbox" class="chip__input" />
+        <label for="ch-foto" class="chip chip--filter">Fotografía</label>
+
+        <input id="ch-comer" type="checkbox" class="chip__input" />
+        <label for="ch-comer" class="chip chip--filter">Comer</label>
+
+        <input id="ch-activ" type="checkbox" class="chip__input" />
+        <label for="ch-activ" class="chip chip--filter">Actividades</label>
+
+        <input id="ch-mir" type="checkbox" class="chip__input" />
+        <label for="ch-mir" class="chip chip--filter">Miradores</label>
+
+        <input id="ch-cult" type="checkbox" class="chip__input" />
+        <label for="ch-cult" class="chip chip--filter">Cultura</label>
+
+        <input id="ch-atar" type="checkbox" class="chip__input" />
+        <label for="ch-atar" class="chip chip--filter">Atardecer</label>
+
+        <input id="ch-gratis" type="checkbox" class="chip__input" />
+        <label for="ch-gratis" class="chip chip--filter">Gratis</label>
+
+        <input id="ch-reserva" type="checkbox" class="chip__input" />
+        <label for="ch-reserva" class="chip chip--filter">Reserva</label>
+      </div>
+
+      <!-- Rejilla de bloques de categoría -->
+      <section class="cats-grid" aria-label="Listado de categorías">
+        <article class="cat-block">
+          <header class="cat-block__head">
+            <h2 class="cat-block__title">Fotografía</h2>
+            <span class="muted small">12 lugares</span>
+          </header>
+          <div class="cat-block__body">
+            <p class="muted">Miradores laterales, pasajes con luz y rincones con patrones urbanos.</p>
+            <div class="cat-block__chips">
+              <span class="chip">Miradores</span><span class="chip">Atardecer</span><span class="chip">Gratis</span>
+            </div>
+          </div>
+          <a class="cat-block__cta" href="mapa.html">Ver en mapa</a>
+        </article>
+
+        <article class="cat-block">
+          <header class="cat-block__head">
+            <h2 class="cat-block__title">Comer</h2>
+            <span class="muted small">9 lugares</span>
+          </header>
+          <div class="cat-block__body">
+            <p class="muted">Bares y locales fuera de carta, menús cortos y carácter propio.</p>
+            <div class="cat-block__chips">
+              <span class="chip">Reserva</span><span class="chip">Cultura</span>
+            </div>
+          </div>
+          <a class="cat-block__cta" href="mapa.html">Ver en mapa</a>
+        </article>
+
+        <article class="cat-block">
+          <header class="cat-block__head">
+            <h2 class="cat-block__title">Actividades</h2>
+            <span class="muted small">7 planes</span>
+          </header>
+          <div class="cat-block__body">
+            <p class="muted">Rutas de neones, azoteas discretas y paseos de 60–90 min.</p>
+            <div class="cat-block__chips">
+              <span class="chip">Barrios</span><span class="chip">Gratis</span>
+            </div>
+          </div>
+          <a class="cat-block__cta" href="planes.html">Ver planes</a>
+        </article>
+
+        <article class="cat-block">
+          <header class="cat-block__head">
+            <h2 class="cat-block__title">Miradores</h2>
+            <span class="muted small">8 lugares</span>
+          </header>
+          <div class="cat-block__body">
+            <p class="muted">Vistas no obvias: laterales, desde callejón o desde azotea.</p>
+            <div class="cat-block__chips">
+              <span class="chip">Fotografía</span><span class="chip">Atardecer</span>
+            </div>
+          </div>
+          <a class="cat-block__cta" href="mapa.html">Ver en mapa</a>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer universal -->
+  <footer class="site-footer">
+    <div class="wrap footer__grid">
+      <div class="footer__col">
+        <strong>Umbral Barcelona</strong>
+        <p class="muted">La otra Barcelona, al alcance de un desvío.</p>
+      </div>
+      <div class="footer__col">
+        <a href="mapa.html">Mapa</a>
+        <a href="planes.html">Planes</a>
+        <a href="categorias.html" aria-current="page">Categorías</a>
+      </div>
+      <div class="footer__col">
+        <a href="favoritos.html">Favoritos</a>
+        <a href="sobre.html">Sobre nosotros</a>
+        <a href="#">Contacto</a>
+      </div>
+      <div class="footer__col muted small">
+        © <span id="year"></span> Umbral Barcelona — Atribución de mapas cuando aplique.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<!-- Portal para modales -->
+<div id="modal-root"></div>
+
+<!-- Modal Auth (carga + eventos globales) -->
+<link rel="stylesheet" href="css/modal.css">
+<script src="js/modal-auth.js" defer></script>
+</body>
+</html>

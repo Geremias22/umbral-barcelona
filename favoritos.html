@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Favoritos — Umbral Barcelona</title>
+
+  <!-- Tipografías opcionales -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Estilos globales + específicos -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/favoritos.css" />
+</head>
+<body>
+  <!-- Header universal -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Inicio Umbral Barcelona">
+        <svg class="brand__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2c-3.6 0-6.5 2.9-6.5 6.5 0 4.9 6.5 13 6.5 13s6.5-8.1 6.5-13C18.5 4.9 15.6 2 12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="8.5" r="1.8" fill="currentColor"/>
+        </svg>
+        <span class="brand__name">Umbral BCN</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Navegación principal">
+        <a href="mapa.html">Mapa</a>
+        <a href="planes.html">Planes alternativos</a>
+        <a href="categorias.html">Categorías</a>
+        <a href="favoritos.html" aria-current="page">Favoritos</a>
+        <a href="sobre.html">Sobre nosotros</a>
+      </nav>
+
+      <div class="nav__cta">
+        <button class="btn btn-outline" type="button" data-open="auth" data-view="login">login <span aria-hidden="true">👤</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <!-- Barra de título + buscador -->
+      <div class="favs-toolbar">
+        <h1 class="hero__title">Favoritos</h1>
+
+        <form class="searchbar searchbar--compact" role="search" aria-label="Buscar en favoritos">
+          <input class="searchbar__input" type="search" placeholder="Buscar favoritos…" />
+          <button class="btn btn-accent searchbar__btn" type="submit" aria-label="Buscar">🔎</button>
+        </form>
+      </div>
+
+      <!-- Estado vacío (muestra este bloque si no hay favoritos) -->
+      <!--
+      <div class="empty">
+        <p class="muted">Aún no tienes favoritos. Explora el <a href="mapa.html">mapa</a> o los <a href="planes.html">planes</a> y añádelos.</p>
+      </div>
+      -->
+
+      <!-- Rejilla de favoritos -->
+      <section class="favs-grid" aria-label="Listado de favoritos">
+        <!-- Tarjeta -->
+        <article class="card fav-card">
+          <button class="fav-card__heart" aria-label="Quitar de favoritos" aria-pressed="true">♥</button>
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Azotea discreta</h3>
+          <p class="muted small">El Born · Gratis</p>
+        </article>
+
+        <article class="card fav-card">
+          <button class="fav-card__heart" aria-label="Quitar de favoritos" aria-pressed="true">♥</button>
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Pasaje escondido</h3>
+          <p class="muted small">Gòtic · Fotografía</p>
+        </article>
+
+        <article class="card fav-card">
+          <button class="fav-card__heart" aria-label="Quitar de favoritos" aria-pressed="true">♥</button>
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Bar fuera de carta</h3>
+          <p class="muted small">Poblenou · Reserva</p>
+        </article>
+
+        <article class="card fav-card">
+          <button class="fav-card__heart" aria-label="Quitar de favoritos" aria-pressed="true">♥</button>
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Ruta de neones</h3>
+          <p class="muted small">Raval · Actividades</p>
+        </article>
+
+        <article class="card fav-card">
+          <button class="fav-card__heart" aria-label="Quitar de favoritos" aria-pressed="true">♥</button>
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Mirador lateral</h3>
+          <p class="muted small">Montjuïc · Miradores</p>
+        </article>
+
+        <article class="card fav-card">
+          <button class="fav-card__heart" aria-label="Quitar de favoritos" aria-pressed="true">♥</button>
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Pasajes modernistas</h3>
+          <p class="muted small">Eixample · Cultura</p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer universal -->
+  <footer class="site-footer">
+    <div class="wrap footer__grid">
+      <div class="footer__col">
+        <strong>Umbral Barcelona</strong>
+        <p class="muted">La otra Barcelona, al alcance de un desvío.</p>
+      </div>
+      <div class="footer__col">
+        <a href="mapa.html">Mapa</a>
+        <a href="planes.html">Planes</a>
+        <a href="categorias.html">Categorías</a>
+      </div>
+      <div class="footer__col">
+        <a href="favoritos.html" aria-current="page">Favoritos</a>
+        <a href="sobre.html">Sobre nosotros</a>
+        <a href="#">Contacto</a>
+      </div>
+      <div class="footer__col muted small">
+        © <span id="year"></span> Umbral Barcelona — Atribución de mapas cuando aplique.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<!-- Portal para modales -->
+<div id="modal-root"></div>
+
+<!-- Modal Auth (carga + eventos globales) -->
+<link rel="stylesheet" href="css/modal.css">
+<script src="js/modal-auth.js" defer></script>
+</body>
+</html>

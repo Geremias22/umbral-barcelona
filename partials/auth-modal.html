@@ -1,0 +1,78 @@
+<!-- Auth Modal (fragmento) -->
+<div class="modal" id="auth-modal" aria-hidden="true">
+  <div class="modal__overlay" data-close></div>
+
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="auth-title" tabindex="-1">
+    <button class="modal__close" type="button" aria-label="Cerrar" data-close>✕</button>
+
+    <h2 id="auth-title" class="modal__title">Acceso</h2>
+
+    <div class="auth-grid">
+      <!-- Login -->
+      <section class="auth-card" id="login-panel" aria-label="Inicio de sesión">
+        <h3>Inicio de sesión</h3>
+
+        <form class="auth-form" action="#" method="post" novalidate>
+          <div class="field">
+            <label for="login-email">Correo</label>
+            <input id="login-email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+
+          <div class="field field--icon">
+            <label for="login-pass">Contraseña</label>
+            <input id="login-pass" name="password" type="password" placeholder="••••••••" required>
+            <button class="icon-btn js-toggle-pass" type="button" aria-label="Mostrar u ocultar contraseña">🔒</button>
+          </div>
+
+          <button class="btn btn-accent" type="submit">Iniciar sesión</button>
+
+          <p class="muted small">
+            ¿No tienes cuenta?
+            <button class="link-like" type="button" data-switch="register">Crear cuenta</button>
+          </p>
+        </form>
+      </section>
+
+      <!-- Register -->
+      <section class="auth-card" id="register-panel" aria-label="Registro" hidden>
+        <h3>Registro</h3>
+
+        <form class="auth-form" action="#" method="post" novalidate>
+          <div class="field">
+            <label for="reg-name">Nombre</label>
+            <input id="reg-name" name="name" type="text" placeholder="Tu nombre" required>
+          </div>
+
+          <div class="field">
+            <label for="reg-email">Correo</label>
+            <input id="reg-email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+
+          <div class="field field--icon">
+            <label for="reg-pass">Contraseña</label>
+            <input id="reg-pass" name="password" type="password" placeholder="••••••••" required>
+            <button class="icon-btn js-toggle-pass" type="button" aria-label="Mostrar u ocultar contraseña">🔒</button>
+          </div>
+
+          <div class="field field--icon">
+            <label for="reg-pass2">Repite la contraseña</label>
+            <input id="reg-pass2" name="password2" type="password" placeholder="••••••••" required>
+            <button class="icon-btn js-toggle-pass" type="button" aria-label="Mostrar u ocultar contraseña">🔒</button>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" required>
+            <span>Acepto la política de privacidad</span>
+          </label>
+
+          <button class="btn btn-accent" type="submit">Registrarse</button>
+
+          <p class="muted small">
+            ¿Ya tienes cuenta?
+            <button class="link-like" type="button" data-switch="login">Inicia sesión</button>
+          </p>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>

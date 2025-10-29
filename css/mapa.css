@@ -1,0 +1,80 @@
+/* Layout de la página de mapa */
+.map-layout{
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  gap:24px;
+}
+
+/* Sidebar de filtros */
+.filters{
+  position:sticky; top:96px; /* debajo del header */
+  background:var(--bg-1);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:16px;
+  height: fit-content;
+}
+.filters__title{
+  font:700 18px/1.3 "Manrope","Inter",sans-serif;
+  margin-bottom:8px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:8px;
+}
+.filter-group{ margin:18px 0; }
+.filter-group__label{ font-weight:600; margin-bottom:8px; }
+
+.chips{ display:flex; gap:10px 8px; flex-wrap:wrap; }
+.chip__input{ position:absolute; opacity:0; pointer-events:none; }
+.chip--filter{
+  cursor:pointer; 
+  /* user-select:none; */
+  transition: all .18s ease;
+}
+.chip__input:checked + .chip--filter{
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+/* Checkboxes simples */
+.check{ display:flex; align-items:center; gap:8px; margin:8px 0; }
+.check input{ width:16px; height:16px; }
+
+/* Range (precio) */
+.range{ width:100%; accent-color: var(--accent); }
+.filter-hint{ margin-top:6px; }
+
+/* Contenedor del mapa */
+.map-box{
+  border-radius: var(--radius-lg);
+  border:1px solid var(--border);
+  padding:8px;
+  background: #0a0b0d;
+}
+.map-img{
+  display:block; width:100%; height:auto;
+  border-radius: calc(var(--radius-lg) - 6px);
+}
+
+/* Placeholder (cuando aún no hay mapa real) */
+.map-placeholder{
+  height: 560px;
+  display:grid; place-items:center;
+  border-radius: calc(var(--radius-lg) - 6px);
+  border:1px dashed var(--border);
+  background:
+    radial-gradient(1200px 480px at 50% 100%, rgba(255,138,61,.08), transparent 60%),
+    linear-gradient(180deg, #121417, #0d0f12);
+}
+.map-placeholder__label{
+  color: var(--txt-2); font-weight:600;
+  padding:10px 14px; border-radius:10px;
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.25);
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  .map-layout{ grid-template-columns: 1fr; }
+  .filters{ position:static; }
+}

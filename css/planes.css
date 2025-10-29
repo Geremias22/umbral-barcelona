@@ -1,0 +1,37 @@
+/* Barra de título + buscador */
+.plans-toolbar{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items:end;
+  gap:16px;
+  margin-bottom:24px;
+}
+
+/* Reutiliza el buscador pero más compacto */
+.searchbar__input{
+  flex:1; height:44px; border-radius:999px;
+  background:var(--bg-1); color:var(--txt-1);
+  border:1px solid var(--border); padding:0 14px;
+}
+.searchbar__input::placeholder{ color:#8e96a3; }
+.searchbar--compact .btn{ padding:8px 14px; }
+
+/* Rejilla de planes (3x2) */
+.plans-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
+
+/* Ajustes de tarjeta de plan */
+.plan{ padding:14px; }
+.plan .card__thumb{ height:180px; }
+
+/* Responsivo */
+@media (max-width: 1024px){
+  .plans-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .plans-grid{ grid-template-columns: 1fr; }
+  .plans-toolbar{ grid-template-columns: 1fr; }
+}

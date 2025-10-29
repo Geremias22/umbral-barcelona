@@ -1,0 +1,72 @@
+/* --------- HERO --------- */
+.hero{ padding:56px 0 24px; }
+.hero__grid{
+  display:grid; align-items:center; gap:24px;
+  grid-template-columns: 1.1fr .9fr;   /* copy + totem */
+}
+.hero__title{
+  font:700 clamp(28px, 5vw, 44px)/1.15 "Manrope","Inter",sans-serif;
+  margin:0 0 8px 0;
+}
+.hero__subtitle{ margin:0 0 20px; color:var(--txt-2); }
+
+/* Buscador */
+.searchbar{
+  display:flex; gap:8px; align-items:center;
+  max-width:520px;
+}
+.searchbar__input{
+  flex:1; height:44px; border-radius:999px;
+  background:var(--bg-1); color:var(--txt-1);
+  border:1px solid var(--border); padding:0 14px;
+}
+.searchbar__input::placeholder{ color:#8e96a3; }
+
+/* Tótem 3D (placeholder visual) */
+.hero__totem{ display:grid; place-items:center; }
+.totem{
+  width:110px; height:160px;
+  border-radius:28px;
+  background: linear-gradient(160deg, #15181d, #0f1114);
+  border:1px solid var(--border);
+  box-shadow: inset 0 -40px 80px rgba(255,138,61,.06);
+  transition: transform .2s ease;
+}
+.totem:hover{ transform: scale(1.04); }
+.totem--hasNew{
+  animation: tilt 1600ms ease-in-out 1;
+}
+@keyframes tilt{
+  0%{ transform: rotate(0deg); }
+  25%{ transform: rotate(8deg); }
+  50%{ transform: rotate(15deg); }
+  75%{ transform: rotate(8deg); }
+  100%{ transform: rotate(0deg); }
+}
+
+/* --------- Carrusel sin JS (scroll-snap) --------- */
+.carousel{
+  position:relative; display:flex; align-items:center; gap:12px;
+}
+.carousel__track{
+  display:flex; gap:16px; overflow:auto; padding:8px;
+  scroll-snap-type:x mandatory;
+  scroll-padding:8px;
+}
+.carousel__track::-webkit-scrollbar{ height:8px; }
+.carousel__track::-webkit-scrollbar-thumb{
+  background: color-mix(in srgb, var(--accent) 30%, #2a2f36);
+  border-radius:99px;
+}
+.carousel__arrow{
+  width:36px; height:36px; border-radius:999px;
+  border:1px solid var(--border);
+  background:transparent; color:var(--txt-1);
+}
+.carousel__arrow:hover{ border-color:var(--accent); color:var(--accent); }
+
+/* --------- Responsivo --------- */
+@media (max-width: 992px){
+  .hero__grid{ grid-template-columns: 1fr; }
+  .hero__totem{ order:-1; }
+}

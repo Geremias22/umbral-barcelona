@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Umbral Barcelona</title>
+
+    <!-- Tipografía (opcional). Si no hay internet, usa las de sistema -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos globales + específicos de Home -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
+</head>
+
+<body>
+    <!-- Header universal -->
+    <header class="site-header">
+        <div class="wrap nav">
+            <a class="brand" href="index.html" aria-label="Inicio Umbral Barcelona">
+                <!-- Logo simple (pin) -->
+                <svg class="brand__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2c-3.6 0-6.5 2.9-6.5 6.5 0 4.9 6.5 13 6.5 13s6.5-8.1 6.5-13C18.5 4.9 15.6 2 12 2z"
+                        fill="none" stroke="currentColor" stroke-width="1.5" />
+                    <circle cx="12" cy="8.5" r="1.8" fill="currentColor" />
+                </svg>
+                <span class="brand__name">Umbral BCN</span>
+            </a>
+
+            <nav class="nav__links" aria-label="Navegación principal">
+                <a href="mapa.html">Mapa</a>
+                <a href="planes.html">Planes alternativos</a>
+                <a href="categorias.html">Categorías</a>
+                <a href="favoritos.html">Favoritos</a>
+                <a href="sobre.html">Sobre nosotros</a>
+            </nav>
+
+            <div class="nav__cta">
+                <button class="btn btn-outline" type="button" data-open="auth" data-view="login" aria-label="Iniciar sesión">
+                    login
+                    <span class="btn__icon" aria-hidden="true">👤</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="wrap hero__grid">
+                <div class="hero__copy">
+                    <h1 class="hero__title">Umbral Barcelona</h1>
+                    <p class="hero__subtitle">Cruza el umbral de la Barcelona no obvia.</p>
+
+                    <form class="searchbar" role="search" aria-label="Buscar lugares o categorías">
+                        <input class="searchbar__input" type="search" placeholder="Buscar lugares / categorías…" />
+                        <button class="btn btn-accent searchbar__btn" type="submit" aria-label="Buscar">🔎</button>
+                    </form>
+                </div>
+
+                <!-- Placeholder del tótem 3D (cuando añadas Three.js, usa este contenedor) -->
+                <aside class="hero__totem" aria-hidden="true">
+                    <div class="totem totem--hasNew" title="Nuevo contenido disponible"></div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- PLANES (carrusel sin JS con scroll-snap) -->
+        <section id="planes" class="section">
+            <div class="wrap">
+                <div class="section__header">
+                    <h2 class="section__title">Planes alternativos</h2>
+                </div>
+
+                <div class="carousel">
+                    <button class="carousel__arrow carousel__arrow--prev" aria-label="Anterior">‹</button>
+
+                    <div class="carousel__track" tabindex="0" aria-label="Carrusel de planes">
+                        <!-- Tarjetas de ejemplo (sustituir por contenido real) -->
+                        <article class="card">
+                            <div class="card__thumb" aria-hidden="true"></div>
+                            <h3 class="card__title">Azotea discreta</h3>
+                            <div class="card__meta">
+                                <span class="chip">Cultura</span><span class="chip">Gratis</span>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card__thumb"></div>
+                            <h3 class="card__title">Pasaje escondido</h3>
+                            <div class="card__meta"><span class="chip">Fotografía</span></div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card__thumb"></div>
+                            <h3 class="card__title">Bar fuera de carta</h3>
+                            <div class="card__meta"><span class="chip">Comer</span><span class="chip">Reserva</span>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card__thumb"></div>
+                            <h3 class="card__title">Ruta de neones</h3>
+                            <div class="card__meta"><span class="chip">Actividades</span></div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card__thumb"></div>
+                            <h3 class="card__title">Mirador lateral</h3>
+                            <div class="card__meta"><span class="chip">Miradores</span></div>
+                        </article>
+                    </div>
+
+                    <button class="carousel__arrow carousel__arrow--next" aria-label="Siguiente">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAPA (placeholder) -->
+        <section id="mapa" class="section">
+            <div class="wrap">
+                <div class="section__header">
+                    <h2 class="section__title">Mapa</h2>
+                </div>
+
+                <div class="map-placeholder" role="img" aria-label="Mapa en desarrollo — Próxima versión">
+                    <div class="map-placeholder__label">
+                        Mapa en desarrollo — Próxima versión
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer universal -->
+    <footer class="site-footer" id="about">
+        <div class="wrap footer__grid">
+            <div class="footer__col">
+                <strong>Umbral Barcelona</strong>
+                <p class="muted">La otra Barcelona, al alcance de un desvío.</p>
+            </div>
+            <div class="footer__col">
+                <a href="mapa.html">Mapa</a>
+                <a href="planes.html">Planes</a>
+                <a href="categorias.html">Categorías</a>
+            </div>
+            <div class="footer__col">
+                <a href="favoritos.html">Favoritos</a>
+                <a href="sobre.html">Sobre nosotros</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="footer__col muted small">
+                © <span id="year"></span> Umbral Barcelona — Atribución de mapas cuando aplique.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script pequeño solo para el año en footer (opcional) -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+<!-- Portal para modales -->
+<div id="modal-root"></div>
+
+<!-- Modal Auth (carga + eventos globales) -->
+<link rel="stylesheet" href="css/modal.css">
+<script src="js/modal-auth.js" defer></script>
+</body>
+
+</html>

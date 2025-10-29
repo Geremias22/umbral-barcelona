@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planes alternativos — Umbral Barcelona</title>
+
+  <!-- Tipografías opcionales -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Estilos globales + específicos -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/planes.css" />
+</head>
+<body>
+  <!-- Header universal -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Inicio Umbral Barcelona">
+        <svg class="brand__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2c-3.6 0-6.5 2.9-6.5 6.5 0 4.9 6.5 13 6.5 13s6.5-8.1 6.5-13C18.5 4.9 15.6 2 12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="8.5" r="1.8" fill="currentColor"/>
+        </svg>
+        <span class="brand__name">Umbral BCN</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Navegación principal">
+        <a href="mapa.html">Mapa</a>
+        <a href="planes.html" aria-current="page">Planes alternativos</a>
+        <a href="categorias.html">Categorías</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="sobre.html">Sobre nosotros</a>
+      </nav>
+
+      <div class="nav__cta">
+        <button class="btn btn-outline" type="button" data-open="auth" data-view="login">login <span aria-hidden="true">👤</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <!-- Barra de título + buscador -->
+      <div class="plans-toolbar">
+        <h1 class="hero__title">Planes alternativos</h1>
+
+        <form class="searchbar searchbar--compact" role="search" aria-label="Buscar planes">
+          <input class="searchbar__input" type="search" placeholder="Buscar planes…" />
+          <button class="btn btn-accent searchbar__btn" type="submit" aria-label="Buscar">🔎</button>
+        </form>
+      </div>
+
+      <!-- Rejilla de tarjetas -->
+      <section class="plans-grid" aria-label="Listado de planes">
+        <!-- Tarjeta -->
+        <article class="card plan">
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Azules en el Born</h3>
+          <p class="muted small">Duración 90 min · 3 paradas</p>
+          <div class="card__meta">
+            <span class="chip">Cultura</span>
+            <span class="chip">Miradores</span>
+          </div>
+        </article>
+
+        <article class="card plan">
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Neones del Raval</h3>
+          <p class="muted small">Duración 75 min · 3 paradas</p>
+          <div class="card__meta">
+            <span class="chip">Actividades</span>
+          </div>
+        </article>
+
+        <article class="card plan">
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Fuera de carta en Poblenou</h3>
+          <p class="muted small">Duración 120 min · 4 paradas</p>
+          <div class="card__meta">
+            <span class="chip">Comer</span><span class="chip">Reserva</span>
+          </div>
+        </article>
+
+        <article class="card plan">
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Miradores laterales</h3>
+          <p class="muted small">Duración 60 min · 2 paradas</p>
+          <div class="card__meta">
+            <span class="chip">Miradores</span>
+          </div>
+        </article>
+
+        <article class="card plan">
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Pasajes escondidos</h3>
+          <p class="muted small">Duración 80 min · 3 paradas</p>
+          <div class="card__meta">
+            <span class="chip">Fotografía</span>
+          </div>
+        </article>
+
+        <article class="card plan">
+          <div class="card__thumb"></div>
+          <h3 class="card__title">Azoteas discretas</h3>
+          <p class="muted small">Duración 70 min · 2 paradas</p>
+          <div class="card__meta">
+            <span class="chip">Cultura</span><span class="chip">Gratis</span>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer universal -->
+  <footer class="site-footer">
+    <div class="wrap footer__grid">
+      <div class="footer__col">
+        <strong>Umbral Barcelona</strong>
+        <p class="muted">La otra Barcelona, al alcance de un desvío.</p>
+      </div>
+      <div class="footer__col">
+        <a href="mapa.html">Mapa</a>
+        <a href="planes.html" aria-current="page">Planes</a>
+        <a href="categorias.html">Categorías</a>
+      </div>
+      <div class="footer__col">
+        <a href="favoritos.html">Favoritos</a>
+        <a href="sobre.html">Sobre nosotros</a>
+        <a href="#">Contacto</a>
+      </div>
+      <div class="footer__col muted small">
+        © <span id="year"></span> Umbral Barcelona — Atribución de mapas cuando aplique.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<!-- Portal para modales -->
+<div id="modal-root"></div>
+
+<!-- Modal Auth (carga + eventos globales) -->
+<link rel="stylesheet" href="css/modal.css">
+<script src="js/modal-auth.js" defer></script>
+</body>
+</html>

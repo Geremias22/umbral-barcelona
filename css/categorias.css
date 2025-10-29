@@ -1,0 +1,72 @@
+/* Barra de título + buscador */
+.cats-toolbar{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items:end;
+  gap:16px;
+  margin-bottom:16px;
+}
+
+/* Fila de chips (scrollable en móvil) */
+.cats-chips{
+  display:flex; gap:10px 8px; flex-wrap:wrap;
+  margin-bottom:24px;
+}
+.chip__input{ position:absolute; opacity:0; pointer-events:none; }
+.chip--filter{ cursor:pointer; transition: all .18s ease; }
+.chip__input:checked + .chip--filter{
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+/* Rejilla 2x2 de bloques de categoría */
+.cats-grid{
+  display:grid; gap:24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Bloque de categoría */
+.cat-block{
+  background: var(--bg-1);
+  border:1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding:18px;
+  min-height: 220px;
+  display:flex; flex-direction:column; gap:12px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.cat-block:hover{ transform: translateY(-2px); box-shadow: var(--shadow-1); }
+.cat-block__head{
+  display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+  border-bottom:1px solid var(--border); padding-bottom:8px;
+}
+.cat-block__title{
+  margin:0; font:700 20px/1.2 "Manrope","Inter",sans-serif;
+}
+.cat-block__body{ flex:1; display:flex; flex-direction:column; gap:10px; }
+.cat-block__chips{ display:flex; gap:8px; flex-wrap:wrap; }
+.cat-block__cta{
+  align-self:flex-start;
+  border:1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius:999px;
+  padding:8px 12px; font-weight:600;
+}
+.cat-block__cta:hover{
+  color:#111; background:var(--accent); border-color:var(--accent);
+}
+
+.searchbar__input{
+  flex:1; height:44px; border-radius:999px;
+  background:var(--bg-1); color:var(--txt-1);
+  border:1px solid var(--border); padding:0 14px;
+}
+.searchbar__input::placeholder{ color:#8e96a3; }
+
+/* Responsive */
+@media (max-width: 1024px){
+  .cats-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 640px){
+  .cats-toolbar{ grid-template-columns: 1fr; }
+}

@@ -1,0 +1,65 @@
+/* Barra de título + buscador */
+.favs-toolbar{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items:end;
+  gap:16px;
+  margin-bottom:24px;
+}
+
+/* Rejilla de favoritos (3x2) */
+.favs-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
+
+/* Tarjeta de favorito */
+.fav-card{
+  position:relative;
+  padding-top:14px; /* hueco para el corazón */
+}
+.fav-card .card__thumb{ height:180px; }
+
+/* Botón corazón (arriba derecha) */
+.fav-card__heart{
+  position:absolute; top:10px; right:10px;
+  width:36px; height:36px; line-height:34px;
+  text-align:center;
+  border-radius:999px;
+  background: transparent;
+  color: var(--accent);
+  border:1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  font-weight:700;
+  cursor:pointer;
+  transition: all .18s ease;
+}
+.fav-card__heart:hover{
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border-color: var(--accent);
+}
+
+.searchbar__input{
+  flex:1; height:44px; border-radius:999px;
+  background:var(--bg-1); color:var(--txt-1);
+  border:1px solid var(--border); padding:0 14px;
+}
+.searchbar__input::placeholder{ color:#8e96a3; }
+
+/* Estado vacío */
+.empty{
+  border:1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding:24px;
+  margin-bottom:24px;
+  background: linear-gradient(180deg, #121417, #0d0f12);
+}
+
+/* Responsive */
+@media (max-width: 1024px){
+  .favs-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .favs-grid{ grid-template-columns: 1fr; }
+  .favs-toolbar{ grid-template-columns: 1fr; }
+}
