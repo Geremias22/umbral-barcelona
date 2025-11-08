@@ -4,16 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mapa — Umbral Barcelona</title>
-
-  <!-- Tipografías (opcional) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700&display=swap" rel="stylesheet">
-
-  <!-- Estilos globales + específicos de Mapa -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/mapa.css" />
+
 </head>
 <body>
-  <!-- Header universal: pega el mismo en todas las páginas -->
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="index.html" aria-label="Inicio Umbral Barcelona">
@@ -24,7 +20,6 @@
         <span class="brand__name">Umbral BCN</span>
       </a>
 
-      <!-- Importante: enlaces a páginas (no a secciones del index) -->
       <nav class="nav__links" aria-label="Navegación principal">
         <a href="mapa.html" aria-current="page">Mapa</a>
         <a href="planes.html">Planes alternativos</a>
@@ -40,11 +35,11 @@
   </header>
 
   <main class="section">
+    <canvas id="pin3d" style="width:320px;height:320px;margin:16px auto;"></canvas>
     <div class="wrap">
       <h1 class="hero__title" style="margin-bottom:24px;">Mapa</h1>
 
       <div class="map-layout">
-        <!-- Sidebar de filtros -->
         <aside class="filters" aria-label="Filtros del mapa">
           <div class="filters__title">Filtros</div>
 
@@ -88,16 +83,10 @@
           </div>
         </aside>
 
-        <!-- Contenedor del mapa -->
         <section class="map-box" aria-label="Mapa">
-          <!-- Placeholder por defecto -->
           <div class="map-placeholder" role="img" aria-label="Mapa en desarrollo — Próxima versión">
             <div class="map-placeholder__label">Mapa en desarrollo — Próxima versión</div>
           </div>
-
-          <!-- Si quieres mostrar una imagen de mock, descomenta y coloca tu ruta:
-          <img class="map-img" src="assets/images/bcn-map-mock.png" alt="Mapa de Barcelona (mock)">
-          -->
         </section>
       </div>
     </div>
@@ -125,15 +114,17 @@
       </div>
     </div>
   </footer>
+  <script type="module" src="/src/js/app.js"></script>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 <!-- Portal para modales -->
 <div id="modal-root"></div>
-
 <!-- Modal Auth (carga + eventos globales) -->
 <link rel="stylesheet" href="css/modal.css">
 <script src="js/modal-auth.js" defer></script>
+
 </body>
 </html>

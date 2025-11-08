@@ -9,6 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700&display=swap" rel="stylesheet">
 
   <!-- Estilos globales + específicos -->
+  <script src="https://unpkg.com/three@0.165.0/build/three.min.js" defer></script>
+  <script src="https://unpkg.com/three@0.165.0/examples/js/controls/OrbitControls.min.js" defer></script>
+  <script src="js/app.js" defer></script>
+
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/sobre.css" />
 </head>
@@ -43,11 +47,6 @@
       <!-- Barra de título + buscador -->
       <div class="about-toolbar">
         <h1 class="hero__title">Sobre nosotros</h1>
-
-        <form class="searchbar searchbar--compact" role="search" aria-label="Buscar">
-          <input class="searchbar__input" type="search" placeholder="Buscar…" />
-          <button class="btn btn-accent searchbar__btn" type="submit" aria-label="Buscar">🔎</button>
-        </form>
       </div>
 
       <!-- Bloque: imagen + texto -->
