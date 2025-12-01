@@ -1,5 +1,11 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { mountBrandPin } from '../three/brandPin.js';
+
+const brandEl = document.getElementById('brand3d');
+if (brandEl) {
+  mountBrandPin(brandEl);
+}
 
 (() => {
   const canvas = document.getElementById('pin3d');
@@ -10,9 +16,9 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
   function init() {
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x202020);
+    // scene.background = new THREE.Color(0x202020);
 
-    const w = canvas.clientWidth || 600;
+    const w = canvas.clientWidth || 200;
     const h = canvas.clientHeight || 400;
 
     camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
@@ -22,7 +28,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
     renderer.setSize(w, h, false);
 
-    const geometry = new THREE.BoxGeometry(2,2,2);
+    const geometry = new THREE.BoxGeometry(5,5,5);
     const material = new THREE.MeshLambertMaterial({ color: 0x44aa88 });
     cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
