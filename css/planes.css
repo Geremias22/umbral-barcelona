@@ -1,10 +1,57 @@
 /* Barra de título + buscador */
-.plans-toolbar{
-  display:grid;
-  grid-template-columns: 1fr auto;
-  align-items:end;
-  gap:16px;
+.page-head{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:14px;
   margin-bottom:24px;
+}
+
+.page-head__title{
+  margin:0;
+  font:700 clamp(30px, 5vw, 46px)/1.1 "Manrope","Inter",sans-serif;
+  text-shadow:0 0 14px rgba(255,138,61,.28);
+}
+
+.page-head__search{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  width:min(620px, 92vw);
+}
+
+.page-head__search input{
+  flex:1;
+  height:46px;
+  border-radius:999px;
+  padding:0 16px;
+  color:var(--txt-1);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 55%),
+    var(--bg-1);
+  border:1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 18%);
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.page-head__search input:focus{
+  outline:none;
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: var(--glow-line);
+  transform: translateY(-1px);
+}
+
+.page-head__search button{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  padding:0;
+}
+
+@media (max-width: 640px){
+  .page-head__search{ width:100%; }
+  .page-head__search input{ width:100%; }
 }
 
 /* Reutiliza el buscador pero más compacto */
@@ -27,11 +74,9 @@
 .plan{ padding:14px; }
 .plan .card__thumb{ height:180px; }
 
-/* Responsivo */
 @media (max-width: 1024px){
-  .plans-grid{ grid-template-columns: repeat(2, 1fr); }
+  .plans-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px){
   .plans-grid{ grid-template-columns: 1fr; }
-  .plans-toolbar{ grid-template-columns: 1fr; }
 }

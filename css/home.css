@@ -16,10 +16,39 @@
   max-width:520px;
 }
 .searchbar__input{
-  flex:1; height:44px; border-radius:999px;
-  background:var(--bg-1); color:var(--txt-1);
-  border:1px solid var(--border); padding:0 14px;
+  flex:1;
+  height:46px;
+  border-radius:999px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 55%),
+    var(--bg-1);
+  color:var(--txt-1);
+  border:1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 18%);
+  padding:0 16px;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
 }
+
+.searchbar__input:focus{
+  outline:none;
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: var(--glow-line);
+  transform: translateY(-1px);
+}
+
+.searchbar__btn{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+}
+/* .searchbar__btn{
+  background:var(--accent);
+  color:#121418;
+  box-shadow: var(--accent-glow-soft);
+  transition: box-shadow .2s ease, transform .2s ease;
+} */
+
 .searchbar__input::placeholder{ color:#8e96a3; }
 
 /* Tótem 3D (placeholder visual) */
@@ -70,3 +99,42 @@
   .hero__grid{ grid-template-columns: 1fr; }
   .hero__totem{ order:-1; }
 }
+
+
+.map-hero{
+  position: relative;
+  display: block;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.map-hero img{
+  width: 100%;
+  height: clamp(220px, 36vw, 380px);
+  object-fit: cover;
+  display: block;
+  filter: blur(2px) brightness(.85);
+  transform: scale(1.03);
+}
+
+.map-hero__overlay{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: .2px;
+  text-transform: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.15), rgba(0,0,0,.55));
+}
+.map-hero img{
+  transition: filter .3s ease, transform .3s ease;
+}
+
+.map-hero__overlay{
+  transition: background .3s ease;
+}
+
+.map-hero:hover img{ filter: blur(1px) brightness(.95); }
+.map-hero:hover .map-hero__overlay{ background: radial-gradient(ellipse at center, rgba(0,0,0,.05), rgba(0,0,0,.45)); }

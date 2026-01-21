@@ -1,10 +1,77 @@
 /* Barra de título + buscador */
-.about-toolbar{
-  display:grid;
-  grid-template-columns: 1fr auto;
-  align-items:end;
-  gap:16px;
+
+
+
+.page-head{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:14px;
   margin-bottom:24px;
+}
+
+.page-head__title{
+  margin:0;
+  font:700 clamp(30px, 5vw, 46px)/1.1 "Manrope","Inter",sans-serif;
+  text-shadow:0 0 14px rgba(255,138,61,.28);
+}
+
+.page-head__search{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  width:min(620px, 92vw);
+}
+
+.page-head__search input{
+  flex:1;
+  height:46px;
+  border-radius:999px;
+  padding:0 16px;
+  color:var(--txt-1);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 55%),
+    var(--bg-1);
+  border:1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 18%);
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.page-head__search input:focus{
+  outline:none;
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: var(--glow-line);
+  transform: translateY(-1px);
+}
+
+.page-head__search button{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  padding:0;
+}
+
+@media (max-width: 640px){
+  .page-head__search{ width:100%; }
+}
+
+.toolbar-search input{
+  width:min(320px, 52vw);
+  height:44px;
+  border-radius:999px;
+  border:1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 18%);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 55%), var(--bg-1);
+  color:var(--txt-1);
+  padding:0 14px;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.toolbar-search input:focus{
+  outline:none;
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: var(--glow-line);
+  transform: translateY(-1px);
 }
 
 /* Imagen + texto */
@@ -29,25 +96,60 @@
   padding-top:24px;
 }
 .contact-grid{
-  display:grid; gap:24px;
+  display:grid;
+  gap:24px;
   grid-template-columns: 1.2fr .8fr .8fr;
-  background: var(--bg-1);
-  border:1px solid var(--border);
+
+  background: color-mix(in srgb, var(--glass) 88%, transparent);
+  border:1px solid color-mix(in srgb, var(--border) 55%, var(--accent) 22%);
   border-radius: var(--radius-lg);
   padding:18px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 0 0 1px rgba(255,138,61,.10),
+    0 18px 60px rgba(0,0,0,.60);
 }
 
 /* Formulario */
 .contact-form .field{ margin-bottom:12px; }
 .contact-form label{ display:block; font-weight:600; margin-bottom:6px; }
 .contact-form input,
+.contact-form input,
 .contact-form textarea{
-  width:100%; color:var(--txt-1); background: #0f1114;
-  border:1px solid var(--border); border-radius:12px;
+  width:100%;
+  color:var(--txt-1);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 55%),
+    #0f1114;
+  border:1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 18%);
+  border-radius:12px;
   padding:10px 12px;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus{
+  outline:none;
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: var(--glow-line);
+  transform: translateY(-1px);
 }
 .contact-form textarea{ resize: vertical; }
+.contact-form .check{
+  margin:12px 0 16px;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  background: rgba(0,0,0,.18);
+}
 
+.contact-form .check input{
+  width:16px;
+  height:16px;
+  accent-color: var(--accent);
+}
 .contact-info ul,
 .contact-extra ul{ margin:0; padding-left:18px; line-height:1.8; }
 .contact-info h3, .contact-extra h3{
@@ -60,6 +162,13 @@
   .contact-grid{ grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px){
-  .about-toolbar{ grid-template-columns: 1fr; }
-  .contact-grid{ grid-template-columns: 1fr; }
+  .about-toolbar{
+    grid-template-columns:1fr;
+  }
+  .page-title{ grid-column:auto; }
+  .toolbar-search{
+    grid-column:auto;
+    justify-self:stretch;
+  }
+  .toolbar-search input{ width:100%; }
 }

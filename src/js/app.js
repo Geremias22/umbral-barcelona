@@ -1,71 +1,67 @@
+// src/js/app.js
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { mountBrandPin } from '../three/brandPin.js';
+import { Chip3D } from '../three/Chip3D.js';
+import { initHome } from "./pages/home.js";
+import { initMapPage } from "./pages/map.js";
+import { initPlansPage } from "./pages/plans.js";
+import { initFavsPage } from "./pages/favs.js";
+
 
 const brandEl = document.getElementById('brand3d');
-if (brandEl) {
-  mountBrandPin(brandEl);
+const page = document.body.dataset.page;
+if (brandEl) mountBrandPin(brandEl);
+
+function initCategoryIcons() {
+  document.querySelectorAll('.chip3d').forEach(span => {
+    const label = span.closest('label');
+
+    // input asociado al label (robusto)
+    let input = null;
+    if (label?.htmlFor) input = document.getElementById(label.htmlFor);
+    if (!input) input = label?.querySelector('input[type="checkbox"]');
+
+    const chip = new Chip3D(span, {
+      modelUrl: span.dataset.model,
+      width: Number(span.dataset.width) || 56,
+      height: Number(span.dataset.height) || 28,
+      viewHeight: Number(span.dataset.viewheight) || 3.0,
+      autoFit: true,
+      fitBox: Number(span.dataset.fitbox) || 0.42,
+      tiltXDeg: Number(span.dataset.tilt) || -12,
+      yawBaseDeg: Number(span.dataset.yaw) || 20,
+      yawAmpDeg: Number(span.dataset.amp) || 35,
+      periodSec: Number(span.dataset.period) || 4.5,
+      // colores por defecto (puedes sobreescribir con data-* si quieres)
+    }).mount();
+
+    if (input) {
+      chip.setActive(input.checked);
+      input.addEventListener('change', () => chip.setActive(input.checked));
+    } else {
+      console.warn('chip3d sin checkbox asociado:', span);
+    }
+  });
 }
 
-(() => {
-  const canvas = document.getElementById('pin3d');
-  if (!canvas) return;
+document.addEventListener('DOMContentLoaded', initCategoryIcons);
 
-  let scene, camera, renderer, cube, controls;
-  init();
 
-  function init() {
-    scene = new THREE.Scene();
-    // scene.background = new THREE.Color(0x202020);
 
-    const w = canvas.clientWidth || 200;
-    const h = canvas.clientHeight || 400;
 
-    camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
-    camera.position.set(5,5,5);
 
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
-    renderer.setSize(w, h, false);
 
-    const geometry = new THREE.BoxGeometry(5,5,5);
-    const material = new THREE.MeshLambertMaterial({ color: 0x44aa88 });
-    cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
 
-    addLights();
-    setupOrbitControls();
-
-    window.addEventListener('resize', onResize);
-    animate();
-  }
-
-  function addLights(){
-    scene.add(new THREE.AmbientLight(0x404040, 0.4));
-    const dir = new THREE.DirectionalLight(0xffffff, 0.8);
-    dir.position.set(10,10,5);
-    scene.add(dir);
-  }
-
-  function setupOrbitControls(){
-    controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.25;
-  }
-
-  function onResize(){
-    const w = canvas.clientWidth || 600;
-    const h = canvas.clientHeight || 400;
-    renderer.setSize(w, h, false);
-    camera.aspect = w/h;
-    camera.updateProjectionMatrix();
-  }
-
-  function animate(){
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    controls.update();
-    renderer.render(scene, camera);
+(async () => {
+  try {
+    if (page === "home") await initHome();
+    if (page === "map") await initMapPage();
+    if (page === "plans") await initPlansPage();
+    if (page === "favs") await initFavsPage();
+  } catch (e) {
+    console.error(e);
   }
 })();
+
+// …tu código del canvas de prueba puede quedarse como está…

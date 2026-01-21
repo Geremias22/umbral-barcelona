@@ -9,11 +9,10 @@
   <link rel="stylesheet" href="css/mapa.css" />
 
 </head>
-<body>
+<body data-page="map">
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="index.html" aria-label="Inicio Umbral Barcelona">
-        <!-- Aquí inyectaremos el canvas -->
         <span id="brand3d" class="brand3d" aria-hidden="true"></span>
         <span class="brand__name">Umbral BCN</span>
       </a>
@@ -33,9 +32,17 @@
   </header>
 
   <main class="section">
-    <canvas id="pin3d" style="width:100px;height:100px;margin-left:180px ;"></canvas>
+    <!-- <canvas id="pin3d" style="width:100px;height:100px;margin-left:180px ;"></canvas> -->
     <div class="wrap">
-      <h1 class="hero__title" style="margin-bottom:24px;">Mapa</h1>
+      <div class="page-head" aria-label="Cabecera del mapa">
+        <h1 class="page-head__title">Mapa</h1>
+
+        <form class="page-head__search" role="search" aria-label="Buscar lugares o categorías">
+          <input type="search" placeholder="Buscar lugares / categorías…" />
+          <button class="btn btn-accent" type="submit" aria-label="Buscar">🔎</button>
+        </form>
+      </div>
+      <br><br>
 
       <div class="map-layout">
         <aside class="filters" aria-label="Filtros del mapa">
@@ -47,19 +54,77 @@
             <!-- Chips seleccionables (checkbox + label) -->
             <div class="chips">
               <input id="cat-foto" type="checkbox" class="chip__input" />
-              <label for="cat-foto" class="chip chip--filter">Fotografía</label>
+              <label for="cat-foto" class="chip chip--filter">
+                <span class="chip3d"
+                  data-model="/models/icon_camara.glb"
+                  data-width="56"
+                  data-height="40"
+                  data-viewheight="6"
+                  data-fitbox="4"
+                  data-tilt="-25"
+                  data-yaw="0"
+                  data-amp="0"
+                  data-period="5"></span>
+              </label>
 
               <input id="cat-comer" type="checkbox" class="chip__input" />
-              <label for="cat-comer" class="chip chip--filter">Comer</label>
+              <label for="cat-comer" class="chip chip--filter">
+                <span id="chip-comer" class="chip3d"
+                  data-model="/models/icon_helado.glb"
+                  data-width="56"
+                  data-height="40"
+                  data-viewheight="6"
+                  data-fitbox="4"
+                  data-tilt="-25"
+                  data-yaw="0"
+                  data-amp="0"
+                  data-period="5"></span>
+                </span>
+              </label>
+
 
               <input id="cat-activ" type="checkbox" class="chip__input" />
-              <label for="cat-activ" class="chip chip--filter">Actividades</label>
+              <label for="cat-activ" class="chip chip--filter">
+                <span class="chip3d"
+                  data-model="/models/icon_activ.glb"
+                  data-width="56"
+                  data-height="40"
+                  data-viewheight="6"
+                  data-fitbox="4"
+                  data-tilt="0"
+                  data-yaw="18"
+                  data-amp="32"
+                  data-period="5"></span>
+              </label>
 
-              <input id="cat-mir" type="checkbox" class="chip__input" />
-              <label for="cat-mir" class="chip chip--filter">Miradores</label>
 
-              <input id="cat-cult" type="checkbox" class="chip__input" />
-              <label for="cat-cult" class="chip chip--filter">Cultura</label>
+              <input id="cat-miradores" type="checkbox" class="chip__input" />
+              <label for="cat-miradores" class="chip chip--filter">
+                <span class="chip3d"
+                  data-model="/models/icon_mirador.glb"
+                  data-width="56"
+                  data-height="40"
+                  data-viewheight="6"
+                  data-fitbox="4"
+                  data-tilt="-25"
+                  data-yaw="0"
+                  data-amp="0"
+                  data-period="5"></span>
+              </label>
+
+              <input id="cat-cultura" type="checkbox" class="chip__input" />
+              <label for="cat-cultura" class="chip chip--filter">
+                <span class="chip3d"
+                  data-model="/models/icon_cultura.glb"
+                  data-width="56"
+                  data-height="40"
+                  data-viewheight="6"
+                  data-fitbox="4"
+                  data-tilt="-25"
+                  data-yaw="0"
+                  data-amp="0"
+                  data-period="5"></span>
+              </label>
             </div>
           </div>
 
@@ -82,8 +147,8 @@
         </aside>
 
         <section class="map-box" aria-label="Mapa">
-          <div class="map-placeholder" role="img" aria-label="Mapa en desarrollo — Próxima versión">
-            <div class="map-placeholder__label">Mapa en desarrollo — Próxima versión</div>
+          <div id="map" class="map-canvas" aria-label="Mapa de Barcelona">
+            <div id="map-markers" class="map-markers" aria-hidden="true"></div>
           </div>
         </section>
       </div>
@@ -112,7 +177,6 @@
       </div>
     </div>
   </footer>
-  <script type="module" src="/src/js/app.js"></script>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -122,6 +186,7 @@
 <div id="modal-root"></div>
 <!-- Modal Auth (carga + eventos globales) -->
 <link rel="stylesheet" href="css/modal.css">
+<script type="module" src="/src/js/app.js"></script>
 <script src="/src/js/modal-auth.js" defer></script>
 
 </body>

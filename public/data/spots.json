@@ -1,0 +1,350 @@
+{
+    "assets": {
+        "map_home": "/img/mapa/mapa_home.png",
+        "map_full": "/img/mapa/mapa.png",
+        "map_link": "/mapa.html"
+    },
+    "plans": [
+        {
+            "id": "plan-azotea",
+            "title": "Azotea discreta",
+            "description": "Vistas laterales y ambiente tranquilo lejos de las multitudes.",
+            "duration": 70,
+            "stops": 2,
+            "chips": [
+                "Cultura",
+                "Gratis"
+            ],
+            "category": "Miradores",
+            "thumb": "/img/planes/azotea.jpg"
+        },
+        {
+            "id": "plan-pasaje",
+            "title": "Pasaje escondido",
+            "description": "Un recorrido breve por rincones ocultos del casco antiguo.",
+            "duration": 80,
+            "stops": 3,
+            "chips": [
+                "Fotografía"
+            ],
+            "category": "Cultura",
+            "thumb": "/img/planes/pasaje.jpg"
+        },
+        {
+            "id": "plan-neones",
+            "title": "Ruta de neones",
+            "description": "Luces urbanas, callejones y contrastes nocturnos.",
+            "duration": 90,
+            "stops": 4,
+            "chips": [
+                "Actividades",
+                "Fotografía"
+            ],
+            "category": "Actividades",
+            "thumb": "/img/planes/neones.jpg"
+        },
+        {
+            "id": "plan-gastro",
+            "title": "Fuera de carta en Poblenou",
+            "description": "Locales pequeños con personalidad y menús alternativos.",
+            "duration": 120,
+            "stops": 4,
+            "chips": [
+                "Comer",
+                "Reserva"
+            ],
+            "category": "Comer",
+            "thumb": "/img/planes/poblenou.jpg"
+        },
+        {
+            "id": "plan-sombras-gotico",
+            "title": "Sombras del Gòtic",
+            "description": "Calles estrechas, contraluces y texturas antiguas para foto urbana sin postureo.",
+            "duration": 85,
+            "stops": 4,
+            "chips": [
+                "Fotografía",
+                "Historia"
+            ],
+            "category": "Fotografía",
+            "thumb": "/img/planes/gotic.jpg"
+        },
+        {
+            "id": "plan-mirador-rail",
+            "title": "Mirador del rail",
+            "description": "Un punto elevado con líneas de fuga y panorama limpio, ideal para atardecer rápido.",
+            "duration": 65,
+            "stops": 2,
+            "chips": [
+                "Miradores",
+                "Sunset"
+            ],
+            "category": "Miradores",
+            "thumb": "/img/planes/mirador_rail.jpg"
+        },
+        {
+            "id": "plan-bcn-nocturna",
+            "title": "Barcelona nocturna en 90",
+            "description": "Ruta corta para ver la ciudad encendida: neón, reflejos y calma a última hora.",
+            "duration": 90,
+            "stops": 3,
+            "chips": [
+                "Fotografía",
+                "Noche"
+            ],
+            "category": "Actividades",
+            "thumb": "/img/planes/nocturna.jpeg"
+        },
+        {
+            "id": "plan-mercados-pequenos",
+            "title": "Mercados pequeños y café",
+            "description": "Paradas rápidas entre puestos, panaderías y un café escondido para cerrar la vuelta.",
+            "duration": 105,
+            "stops": 4,
+            "chips": [
+                "Comer",
+                "Local"
+            ],
+            "category": "Comer",
+            "thumb": "/img/planes/mercados.jpg"
+        },
+        {
+            "id": "plan-eixample-geom",
+            "title": "Geometría del Eixample",
+            "description": "Esquinas perfectas, simetrías y fachadas para entrenar el ojo con luz lateral.",
+            "duration": 75,
+            "stops": 3,
+            "chips": [
+                "Fotografía",
+                "Arquitectura"
+            ],
+            "category": "Fotografía",
+            "thumb": "/img/planes/eixample.jpg"
+        },
+        {
+            "id": "plan-born-lento",
+            "title": "El Born lento",
+            "description": "Calles tranquilas, patios y rincones con sombra. Plan suave para pasear sin prisas.",
+            "duration": 110,
+            "stops": 4,
+            "chips": [
+                "Cultura",
+                "Local"
+            ],
+            "category": "Cultura",
+            "thumb": "/img/planes/born.jpg"
+        },
+        {
+            "id": "plan-montjuic-quiet",
+            "title": "Montjuïc sin ruido",
+            "description": "Tramos cortos entre verde y miradores discretos. Perfecto para desconectar.",
+            "duration": 115,
+            "stops": 4,
+            "chips": [
+                "Actividades",
+                "Gratis"
+            ],
+            "category": "Miradores",
+            "thumb": "/img/planes/montjuic.jpg"
+        },
+        {
+            "id": "plan-raval-contrastes",
+            "title": "Contrastes del Raval",
+            "description": "Texturas urbanas, luces duras y rincones con carácter para foto street.",
+            "duration": 80,
+            "stops": 3,
+            "chips": [
+                "Fotografía",
+                "Street"
+            ],
+            "category": "Fotografía",
+            "thumb": "/img/planes/raval.jpg"
+        },
+        {
+            "id": "plan-tapeo-minimo",
+            "title": "Tapeo mínimo",
+            "description": "Dos paradas muy seleccionadas: una barra auténtica y un cierre dulce sin colas.",
+            "duration": 95,
+            "stops": 2,
+            "chips": [
+                "Comer",
+                "Reserva"
+            ],
+            "category": "Comer",
+            "thumb": "/img/planes/tapeo.jpg"
+        },
+        {
+            "id": "plan-lectura-plaza",
+            "title": "Lectura en plazas pequeñas",
+            "description": "Micro-ruta por plazas tranquilas para sentarte, leer y respirar sin turismo encima.",
+            "duration": 70,
+            "stops": 3,
+            "chips": [
+                "Cultura",
+                "Gratis"
+            ],
+            "category": "Cultura",
+            "thumb": "/img/planes/plazas.jpg"
+        },
+        {
+            "id": "plan-mar-y-reflejos",
+            "title": "Mar y reflejos",
+            "description": "Paseo corto para foto con reflejos de agua, luces cálidas y líneas del puerto.",
+            "duration": 85,
+            "stops": 3,
+            "chips": [
+                "Fotografía",
+                "Atardecer"
+            ],
+            "category": "Fotografía",
+            "thumb": "/img/planes/puerto.jpg"
+        },
+        {
+            "id": "plan-caminata-azul",
+            "title": "Caminata azul",
+            "description": "Ruta para la hora azul: cuando la ciudad cambia y todo se ve más cinematográfico.",
+            "duration": 100,
+            "stops": 4,
+            "chips": [
+                "Actividades",
+                "Fotografía"
+            ],
+            "category": "Actividades",
+            "thumb": "/img/planes/hora_azul.jpg"
+        },
+        {
+            "id": "plan-miradores-rapidos",
+            "title": "Miradores rápidos",
+            "description": "Dos puntos con vista asegurada, sin subidas pesadas. Ideal para tarde improvisada.",
+            "duration": 60,
+            "stops": 2,
+            "chips": [
+                "Miradores",
+                "Gratis"
+            ],
+            "category": "Miradores",
+            "thumb": "/img/planes/miradores_rapidos.jpg"
+        },
+        {
+            "id": "plan-arte-pequeno",
+            "title": "Arte pequeño",
+            "description": "Galerías discretas y espacios culturales fuera del circuito, con cierre en un patio.",
+            "duration": 120,
+            "stops": 4,
+            "chips": [
+                "Cultura",
+                "Actividades"
+            ],
+            "category": "Cultura",
+            "thumb": "/img/planes/arte.jpg"
+        }
+    ],
+    "spots": [
+        {
+            "id": "spot-mirador",
+            "title": "Mirador lateral",
+            "category": "Miradores",
+            "area": "Montjuïc",
+            "chips": [
+                "Atardecer",
+                "Foto"
+            ],
+            "price": 0,
+            "needsReservation": false,
+            "thumb": "/img/spots/mirador.jpg",
+            "description": "Un punto discreto para ver la ciudad sin aglomeraciones.",
+            "lat": 41.369,
+            "lng": 2.15
+        },
+        {
+            "id": "spot-pasaje",
+            "title": "Pasaje modernista",
+            "category": "Fotografía",
+            "area": "Eixample",
+            "chips": [
+                "Arquitectura",
+                "Historia"
+            ],
+            "price": 0,
+            "needsReservation": false,
+            "thumb": "/img/spots/pasaje.jpg",
+            "description": "Un rincón poco transitado con detalles modernistas.",
+            "lat": 41.389,
+            "lng": 2.17
+        },
+        {
+            "id": "spot-bar",
+            "title": "Bar fuera de carta",
+            "category": "Comer",
+            "area": "Poblenou",
+            "chips": [
+                "Reserva",
+                "Local"
+            ],
+            "price": 2,
+            "needsReservation": true,
+            "thumb": "/img/spots/bar.jpg",
+            "description": "Cocina creativa en un espacio reducido y auténtico.",
+            "lat": 41.402,
+            "lng": 2.204
+        },
+        {
+            "id": "spot-azotea",
+            "title": "Azotea secreta",
+            "category": "Miradores",
+            "area": "El Born",
+            "chips": [
+                "Vistas",
+                "Sunset"
+            ],
+            "price": 1,
+            "needsReservation": false,
+            "thumb": "/img/spots/azotea.jpg",
+            "description": "Un mirador urbano con ambiente relajado al atardecer.",
+            "lat": 41.384,
+            "lng": 2.182
+        },
+        {
+            "id": "spot-neon",
+            "title": "Callejón de neones",
+            "category": "Fotografía",
+            "area": "Raval",
+            "chips": [
+                "Noche",
+                "Street"
+            ],
+            "price": 0,
+            "needsReservation": false,
+            "thumb": "/img/spots/neones.jpg",
+            "description": "Uno de los mejores puntos para fotografía nocturna.",
+            "lat": 41.377,
+            "lng": 2.168
+        }
+    ],
+    "categories": [
+        {
+            "id": "cat-foto",
+            "name": "Fotografía",
+            "icon": "camera",
+            "description": "Lugares con luz, composición urbana y rincones visuales."
+        },
+        {
+            "id": "cat-comer",
+            "name": "Comer",
+            "icon": "food",
+            "description": "Locales pequeños y experiencias gastronómicas alternativas."
+        },
+        {
+            "id": "cat-activ",
+            "name": "Actividades",
+            "icon": "activity",
+            "description": "Planes cortos para descubrir la ciudad de otra forma."
+        },
+        {
+            "id": "cat-miradores",
+            "name": "Miradores",
+            "icon": "view",
+            "description": "Vistas no evidentes, desde azoteas a rincones ocultos."
+        }
+    ]
+}

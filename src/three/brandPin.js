@@ -1,13 +1,12 @@
 // src/three/brandPin.js
 import * as THREE from 'three';
 import { GLBModel } from './GLBModel.js';
+import { configureRenderer, addIconLights, sunsetMinimal } from './style3d.js';
 
 export function mountBrandPin(container) {
   if (!container) return;
 
-  console.log('[BrandPin] init');
-
-  // Aseguramos que el contenedor tenga algo de tamaño visible
+  // Tamaño del contenedor (icono)
   container.style.display = 'inline-block';
   container.style.width = '40px';
   container.style.height = '40px';
@@ -18,14 +17,13 @@ export function mountBrandPin(container) {
   container.innerHTML = '';
   container.appendChild(renderer.domElement);
 
-  // Escena + cámara ortográfica (ideal para iconos)
+  // >>> 1) Config global de renderer desde style3d
+  configureRenderer(renderer, { exposure: 1 });
+
+  // Escena + cámara ortográfica
   const scene = new THREE.Scene();
   const frustum = 1.4;
-  const camera = new THREE.OrthographicCamera(
-    -frustum, frustum,
-    frustum, -frustum,
-    0.1, 100
-  );
+  const camera = new THREE.OrthographicCamera(-frustum, frustum, frustum, -frustum, 0.1, 100);
   camera.position.set(2.2, 2.2, 2.2);
   camera.lookAt(0, 0, 0);
 
@@ -35,22 +33,19 @@ export function mountBrandPin(container) {
     renderer.setSize(w, h, false);
 
     const aspect = w / Math.max(h, 1);
-    camera.left   = -frustum * aspect;
-    camera.right  =  frustum * aspect;
-    camera.top    =  frustum;
+    camera.left = -frustum * aspect;
+    camera.right =  frustum * aspect;
+    camera.top =    frustum;
     camera.bottom = -frustum;
     camera.updateProjectionMatrix();
   }
   resize();
   window.addEventListener('resize', resize);
 
-  // Luces
-  scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-  const dir = new THREE.DirectionalLight(0xffffff, 0.8);
-  dir.position.set(2, 3, 4);
-  scene.add(dir);
+  // >>> 2) Luces coherentes desde style3d
+  addIconLights(scene);
 
-  // Placeholder (cubo) mientras carga el pin
+  // Placeholder mientras carga
   const placeholder = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshStandardMaterial({ color: 0xff8a3d })
@@ -60,51 +55,38 @@ export function mountBrandPin(container) {
   let model = null;
   let raf;
 
-  // Bucle de render (gira el cubo hasta que tengamos el modelo)
   const loop = () => {
     raf = requestAnimationFrame(loop);
-
-    if (model) {
-      model.rotation.y += 0.03;
-      placeholder.visible = false;
-    } else {
-      placeholder.rotation.y += 0.03;
-    }
-
+    (model || placeholder).rotation.y += 0.02;
     renderer.render(scene, camera);
   };
   loop();
 
-  // -----------------------------
-  // CARGA DEL PIN CON GLBModel
-  // -----------------------------
+  // Cargar el GLB
+  const pinModel = new GLBModel('/models/icon_pin.glb', new THREE.Vector3(0,-1,0), new THREE.Vector3(0.5,0.5,0.5));
+  pinModel.load(scene)
+    .then((root) => {
+      model = root;
 
-  // Con Vite:
-  // - si el archivo está en public/models/icon_pin.glb,
-  //   la URL pública es "/models/icon_pin.glb"
-  const pinModel = new GLBModel(
-    '/models/icon_pin.glb',                 // ruta pública del modelo
-    new THREE.Vector3(0, -1, 0),            // centro
-    new THREE.Vector3(0.5, 0.5, 0.5)    // escala (ajústala si se ve muy pequeño/grande)
-  );
+      // >>> 3) Aplica el look a TODO el modelo con UNA línea
+      sunsetMinimal({
+        color: 0xff8a3d,          // puedes cambiar la paleta aquí si quieres
+        emissive: 0xA00060,
+        metalness: 0.15,
+        roughness: 0.35,
+        emissiveIntensity: 0.18,
+        shared: true
+      }).applyTo(model);
 
-  pinModel
-    .load(scene)
-    .then((model3DCarregat) => {
-      console.log('[BrandPin] Pin cargado con GLBModel:', model3DCarregat);
-
-      model = model3DCarregat;
-      model.rotation.set(0.2, 0.6, 0);     // inclinación “bonita”
-
+      model.rotation.set(0, 0.6, 0); // pose “bonita”
       scene.remove(placeholder);
       container.closest('.brand')?.classList.add('brand--3d');
     })
-    .catch((error) => {
-      console.error('[BrandPin] Error cargando el pin 3D:', error);
-      // Si falla, se queda el cubo + el SVG
+    .catch((err) => {
+      console.error('[BrandPin] Error al cargar el pin:', err);
     });
 
-  // Cleanup opcional
+  // Cleanup
   return () => {
     cancelAnimationFrame(raf);
     window.removeEventListener('resize', resize);

@@ -1,3 +1,57 @@
+.page-head{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:14px;
+  margin-bottom:24px;
+}
+
+.page-head__title{
+  margin:0;
+  font:700 clamp(30px, 5vw, 46px)/1.1 "Manrope","Inter",sans-serif;
+  text-shadow:0 0 14px rgba(255,138,61,.28);
+}
+
+.page-head__search{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  width:min(720px, 92vw);
+}
+
+.page-head__search input{
+  flex:1;
+  height:46px;
+  border-radius:999px;
+  padding:0 16px;
+  color:var(--txt-1);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 55%),
+    var(--bg-1);
+  border:1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 18%);
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.page-head__search input:focus{
+  outline:none;
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: var(--glow-line);
+  transform: translateY(-1px);
+}
+
+.page-head__search button{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  padding:0;
+}
+
+@media (max-width: 640px){
+  .page-head__search{ width:100%; }
+}
+
 /* Layout de la página de mapa */
 .map-layout{
   display:grid;
@@ -7,13 +61,38 @@
 
 /* Sidebar de filtros */
 .filters{
-  position:sticky; top:96px; /* debajo del header */
-  background:var(--bg-1);
-  border:1px solid var(--border);
+  position:sticky;
+  top:96px;
+
+  background: color-mix(in srgb, var(--glass) 92%, transparent);
+  border:1px solid color-mix(in srgb, var(--border) 55%, var(--accent) 22%);
   border-radius:var(--radius-lg);
   padding:16px;
   height: fit-content;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 0 0 1px rgba(255,138,61,.10),
+    0 18px 50px rgba(0,0,0,.55);
 }
+
+/* Contenedor del mapa */
+.map-box{
+  border-radius: var(--radius-lg);
+  border:1px solid color-mix(in srgb, var(--border) 55%, var(--accent) 22%);
+  padding:12px;
+
+  background: color-mix(in srgb, var(--glass) 88%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 0 0 1px rgba(255,138,61,.10),
+    0 18px 60px rgba(0,0,0,.60);
+}
+
 .filters__title{
   font:700 18px/1.3 "Manrope","Inter",sans-serif;
   margin-bottom:8px;
@@ -44,13 +123,7 @@
 .range{ width:100%; accent-color: var(--accent); }
 .filter-hint{ margin-top:6px; }
 
-/* Contenedor del mapa */
-.map-box{
-  border-radius: var(--radius-lg);
-  border:1px solid var(--border);
-  padding:8px;
-  background: #0a0b0d;
-}
+
 .map-img{
   display:block; width:100%; height:auto;
   border-radius: calc(var(--radius-lg) - 6px);
@@ -58,13 +131,18 @@
 
 /* Placeholder (cuando aún no hay mapa real) */
 .map-placeholder{
-  height: 560px;
-  display:grid; place-items:center;
-  border-radius: calc(var(--radius-lg) - 6px);
-  border:1px dashed var(--border);
+  min-height: 560px;
+  display:grid;
+  place-items:center;
+
+  border:1px solid color-mix(in srgb, var(--border) 65%, var(--accent) 18%);
+  border-radius: calc(var(--radius-lg) - 8px);
+
   background:
-    radial-gradient(1200px 480px at 50% 100%, rgba(255,138,61,.08), transparent 60%),
-    linear-gradient(180deg, #121417, #0d0f12);
+    radial-gradient(1200px 480px at 50% 100%, rgba(255,138,61,.14), transparent 60%),
+    radial-gradient(900px 380px at 0% 0%, rgba(255,183,132,.10), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 40%),
+    #0d0f12;
 }
 .map-placeholder__label{
   color: var(--txt-2); font-weight:600;
@@ -72,6 +150,76 @@
   border:1px solid var(--border);
   background: rgba(0,0,0,.25);
 }
+
+
+.map-canvas{
+  position: relative;
+  width: 100%;
+  height: min(72vh, 760px);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+
+  /* tu mapa */
+  background-image: url("/img/mapa/mapa.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.map-markers{
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* el contenedor no bloquea clicks */
+}
+
+.map-pin{
+  position: absolute;
+  transform: translate(-50%, -100%); /* “punta” del pin en el punto */
+  pointer-events: auto; /* el pin sí se puede clicar */
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+.map-pin::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-9px;
+  width:12px;
+  height:12px;
+  transform: translateX(-50%) rotate(45deg);
+  background: inherit;
+  border-right: 1px solid rgba(255,255,255,.18);
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.map-pin__dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* colores por categoría (puedes afinarlos) */
+.map-pin[data-cat="Fotografía"] .map-pin__dot{ background: #37d7ff; }
+.map-pin[data-cat="Comer"]      .map-pin__dot{ background: #ff6db3; }
+.map-pin[data-cat="Actividades"].map-pin__dot{ background: #ffc94a; }
+.map-pin[data-cat="Miradores"]  .map-pin__dot{ background: #9b7bff; }
+
+.map-pin:hover{
+  background: rgba(255,255,255,.12);
+}
+
+
+
 
 /* Responsive */
 @media (max-width: 992px){

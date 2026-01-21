@@ -15,17 +15,12 @@
     <link rel="stylesheet" href="css/home.css" />
 </head>
 
-<body>
+<body data-page="home">
     <!-- Header universal -->
     <header class="site-header">
         <div class="wrap nav">
             <a class="brand" href="index.html" aria-label="Inicio Umbral Barcelona">
-                <!-- Logo simple (pin) -->
-                <svg class="brand__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2c-3.6 0-6.5 2.9-6.5 6.5 0 4.9 6.5 13 6.5 13s6.5-8.1 6.5-13C18.5 4.9 15.6 2 12 2z"
-                        fill="none" stroke="currentColor" stroke-width="1.5" />
-                    <circle cx="12" cy="8.5" r="1.8" fill="currentColor" />
-                </svg>
+                <span id="brand3d" class="brand3d" aria-hidden="true"></span>
                 <span class="brand__name">Umbral BCN</span>
             </a>
 
@@ -77,15 +72,15 @@
                 <div class="carousel">
                     <button class="carousel__arrow carousel__arrow--prev" aria-label="Anterior">‹</button>
 
-                    <div class="carousel__track" tabindex="0" aria-label="Carrusel de planes">
+                    <div id="home-plans-track" class="carousel__track" tabindex="0" aria-label="Carrusel de planes">
                         <!-- Tarjetas de ejemplo (sustituir por contenido real) -->
-                        <article class="card">
+                        <!-- <article class="card"> -->
                             <div class="card__thumb" aria-hidden="true"></div>
                             <h3 class="card__title">Azotea discreta</h3>
                             <div class="card__meta">
                                 <span class="chip">Cultura</span><span class="chip">Gratis</span>
                             </div>
-                        </article>
+                        <!-- </article> -->
 
                         <article class="card">
                             <div class="card__thumb"></div>
@@ -122,14 +117,13 @@
         <section id="mapa" class="section">
             <div class="wrap">
                 <div class="section__header">
-                    <h2 class="section__title">Mapa</h2>
+                <h2 class="section__title">Mapa</h2>
                 </div>
 
-                <div class="map-placeholder" role="img" aria-label="Mapa en desarrollo — Próxima versión">
-                    <div class="map-placeholder__label">
-                        Mapa en desarrollo — Próxima versión
-                    </div>
-                </div>
+                <a id="home-map-link" class="map-hero" href="mapa.html" aria-label="Abrir mapa">
+                <img id="home-map-img" alt="Mapa de Umbral Barcelona" />
+                <span class="map-hero__overlay">Explorar el mapa →</span>
+                </a>
             </div>
         </section>
     </main>
@@ -166,6 +160,7 @@
 
 <!-- Modal Auth (carga + eventos globales) -->
 <link rel="stylesheet" href="css/modal.css">
+<script type="module" src="/src/js/app.js"></script>
 <script src="/src/js/modal-auth.js" defer></script>
 </body>
 

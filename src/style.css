@@ -4,93 +4,227 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #050816; /* algo más oscuro para que el neón destaque */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* colores base */
+  --neon-blue: #646cff;
+  --neon-blue-soft: #646cff55;
+  --neon-blue-strong: #535bf2;
+  --neon-yellow: #f7df1e;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Fondo con halo sutil tipo neón */
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(100, 108, 255, 0.25), transparent 55%),
+    radial-gradient(circle at bottom, rgba(247, 223, 30, 0.18), transparent 60%),
+    #050816;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Enlaces con brillo */
+a {
+  font-weight: 500;
+  color: var(--neon-blue);
+  text-decoration: none;
+  text-shadow: 0 0 6px var(--neon-blue-soft);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
+a:hover {
+  color: var(--neon-blue-strong);
+  text-shadow:
+    0 0 6px var(--neon-blue),
+    0 0 14px var(--neon-blue);
+}
+
+/* Contenedor principal con efecto tarjeta de cristal + neón */
 #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, #1f1f3b 0, #101018 55%, #050816 100%);
+  box-shadow:
+    0 0 25px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(100, 108, 255, 0.25);
+  border: 1px solid rgba(100, 108, 255, 0.35);
 }
 
+/* Títulos con glow */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 0 8px rgba(100, 108, 255, 0.8),
+    0 0 16px rgba(100, 108, 255, 0.6),
+    0 0 28px rgba(247, 223, 30, 0.4);
+}
+
+/* Logo con pulso de neón */
 .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  will-change: filter, transform;
+  transition: filter 300ms ease, transform 300ms ease;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
+  transform: scale(1.08) rotate(-2deg);
+  animation: neonPulse 1.6s infinite alternate;
 }
+
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
 
+/* Animación suave de pulso */
+@keyframes neonPulse {
+  0% {
+    filter: drop-shadow(0 0 1.2em #646cffaa);
+  }
+  100% {
+    filter: drop-shadow(0 0 2.4em #f7df1eee);
+  }
+}
+
+/* Cards con borde neón sutil */
 .card {
   padding: 2em;
+  margin-top: 1.5rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(20, 20, 40, 0.96), rgba(5, 8, 24, 0.98));
+  border: 1px solid rgba(100, 108, 255, 0.4);
+  box-shadow:
+    0 0 18px rgba(100, 108, 255, 0.25),
+    0 0 35px rgba(0, 0, 0, 0.9);
 }
 
+/* Texto secundario */
 .read-the-docs {
-  color: #888;
+  color: #9a9abf;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
 }
 
+/* Botones tipo neón */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 108, 255, 0.7);
+  padding: 0.6em 1.8em;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 600;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background: radial-gradient(circle at 20% 0%, #26264b 0, #101020 55%, #050816 100%);
+  color: #f9f9ff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 5px rgba(100, 108, 255, 0.75),
+    0 0 10px rgba(100, 108, 255, 0.4);
+  box-shadow:
+    0 0 12px rgba(100, 108, 255, 0.7),
+    0 0 25px rgba(83, 91, 242, 0.45);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease,
+    background 0.25s ease;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: var(--neon-yellow);
+  background: radial-gradient(circle at 20% 0%, #3a2f73 0, #171735 55%, #050816 100%);
+  box-shadow:
+    0 0 16px rgba(247, 223, 30, 0.8),
+    0 0 30px rgba(100, 108, 255, 0.9);
+  transform: translateY(-2px) scale(1.03);
 }
+
+button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 0 10px rgba(100, 108, 255, 0.8),
+    0 0 20px rgba(83, 91, 242, 0.7);
+}
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px solid rgba(247, 223, 30, 0.9);
+  outline-offset: 3px;
 }
 
+/* tamaño del “icono-chip” */
+.chip .chip3d {
+  display:inline-block;
+  width:28px;
+  height:28px;
+  margin-right:8px;
+  vertical-align:middle;
+  pointer-events:none; /* que el click llegue al label */
+  border-radius: 8px;
+  background: radial-gradient(circle at 30% 0%, #f7df1e 0, #646cff 65%, #050816 100%);
+  box-shadow:
+    0 0 10px rgba(247, 223, 30, 0.8),
+    0 0 18px rgba(100, 108, 255, 0.7);
+}
+
+/* Modo claro: mantenemos algo más sencillo pero con un toque de color */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
+
+  body {
+    background:
+      radial-gradient(circle at top, rgba(100, 108, 255, 0.15), transparent 55%),
+      #ffffff;
+  }
+
+  #app {
+    background: #ffffff;
+    border: 1px solid rgba(100, 108, 255, 0.25);
+    box-shadow:
+      0 0 18px rgba(100, 108, 255, 0.2),
+      0 0 25px rgba(0, 0, 0, 0.08);
+  }
+
   a:hover {
     color: #747bff;
+    text-shadow: 0 0 4px rgba(116, 123, 255, 0.6);
   }
+
   button {
-    background-color: #f9f9f9;
+    background: linear-gradient(135deg, #f9f9ff, #e5e7ff);
+    color: #1f1f3b;
+    box-shadow:
+      0 0 8px rgba(116, 123, 255, 0.45),
+      0 0 14px rgba(0, 0, 0, 0.08);
+  }
+
+  button:hover {
+    background: linear-gradient(135deg, #ffffff, #dde0ff);
+  }
+
+  .card {
+    background: #ffffff;
+    border-color: rgba(100, 108, 255, 0.3);
+    box-shadow:
+      0 0 12px rgba(100, 108, 255, 0.2),
+      0 0 24px rgba(0, 0, 0, 0.06);
   }
 }

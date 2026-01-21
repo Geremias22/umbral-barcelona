@@ -1,30 +1,30 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Categorías — Umbral Barcelona</title>
 
   <!-- Tipografías opcionales -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700&display=swap"
+    rel="stylesheet">
 
   <!-- Estilos globales + específicos -->
   <script src="https://unpkg.com/three@0.165.0/build/three.min.js" defer></script>
   <script src="https://unpkg.com/three@0.165.0/examples/js/controls/OrbitControls.min.js" defer></script>
-<script src="js/app.js" defer></script>
+  <script src="js/app.js" defer></script>
 
-<link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/categorias.css" />
 </head>
+
 <body>
   <!-- Header universal -->
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="index.html" aria-label="Inicio Umbral Barcelona">
-        <svg class="brand__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2c-3.6 0-6.5 2.9-6.5 6.5 0 4.9 6.5 13 6.5 13s6.5-8.1 6.5-13C18.5 4.9 15.6 2 12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="12" cy="8.5" r="1.8" fill="currentColor"/>
-        </svg>
+        <span id="brand3d" class="brand3d" aria-hidden="true"></span>
         <span class="brand__name">Umbral BCN</span>
       </a>
 
@@ -37,51 +37,68 @@
       </nav>
 
       <div class="nav__cta">
-        <button class="btn btn-outline" type="button" data-open="auth" data-view="login">login <span aria-hidden="true">👤</span></button>
+        <button class="btn btn-outline" type="button" data-open="auth" data-view="login">login <span
+            aria-hidden="true">👤</span></button>
       </div>
     </div>
   </header>
 
   <main class="section">
     <div class="wrap">
-      <!-- Barra de título + buscador -->
-      <div class="cats-toolbar">
-        <h1 class="hero__title">Categorías</h1>
-
-        <form class="searchbar searchbar--compact" role="search" aria-label="Buscar por categoría o nombre">
-          <input class="searchbar__input" type="search" placeholder="Buscar categorías…" />
-          <button class="btn btn-accent searchbar__btn" type="submit" aria-label="Buscar">🔎</button>
-        </form>
-      </div>
 
       <!-- Fila de chips (filtros rápidos) -->
-      <div class="cats-chips" aria-label="Filtros rápidos">
-        <!-- Cada chip es un checkbox invisible + label -->
-        <input id="ch-foto" type="checkbox" class="chip__input" />
-        <label for="ch-foto" class="chip chip--filter">Fotografía</label>
+      <div class="page-head" aria-label="Cabecera de categorías">
+        <h1 class="page-head__title">Categorías</h1>
 
-        <input id="ch-comer" type="checkbox" class="chip__input" />
-        <label for="ch-comer" class="chip chip--filter">Comer</label>
+        <form id="catsSearch" class="page-head__search" role="search" aria-label="Buscar por categoría o nombre">
+          <input id="catsQuery" type="search" placeholder="Buscar categorías, tags o descripción…" autocomplete="off" />
+          <button class="btn btn-accent" type="submit" aria-label="Buscar">🔎</button>
+        </form>
 
-        <input id="ch-activ" type="checkbox" class="chip__input" />
-        <label for="ch-activ" class="chip chip--filter">Actividades</label>
+        <!-- Chips (filtros rápidos) -->
+        <div class="cats-chips" aria-label="Filtros rápidos">
+          <input id="cat-foto" type="checkbox" class="chip__input" />
+          <label for="cat-foto" class="chip chip--filter" data-filter="fotografia foto cámara camara">
+            <span class="chip3d" data-model="/models/icon_camara.glb" data-width="56" data-height="40"
+              data-viewheight="6" data-fitbox="4" data-tilt="-25" data-yaw="0" data-amp="0" data-period="5"></span>
+          </label>
 
-        <input id="ch-mir" type="checkbox" class="chip__input" />
-        <label for="ch-mir" class="chip chip--filter">Miradores</label>
+          <input id="cat-comer" type="checkbox" class="chip__input" />
+          <label for="cat-comer" class="chip chip--filter" data-filter="comer food bar restaurante">
+            <span class="chip3d" data-model="/models/icon_helado.glb" data-width="56" data-height="40"
+              data-viewheight="6" data-fitbox="4" data-tilt="-25" data-yaw="0" data-amp="0" data-period="5"></span>
+          </label>
 
-        <input id="ch-cult" type="checkbox" class="chip__input" />
-        <label for="ch-cult" class="chip chip--filter">Cultura</label>
+          <input id="cat-activ" type="checkbox" class="chip__input" />
+          <label for="cat-activ" class="chip chip--filter" data-filter="actividades planes rutas paseo">
+            <span class="chip3d" data-model="/models/icon_activ.glb" data-width="56" data-height="40"
+              data-viewheight="6" data-fitbox="4" data-tilt="0" data-yaw="18" data-amp="32" data-period="5"></span>
+          </label>
 
-        <input id="ch-atar" type="checkbox" class="chip__input" />
-        <label for="ch-atar" class="chip chip--filter">Atardecer</label>
+          <input id="cat-mirador" type="checkbox" class="chip__input" />
+          <label for="cat-mirador" class="chip chip--filter" data-filter="miradores vistas atardecer">
+            <span class="chip3d" data-model="/models/icon_mirador.glb" data-width="56" data-height="40"
+              data-viewheight="6" data-fitbox="4" data-tilt="-25" data-yaw="0" data-amp="0" data-period="5"></span>
+          </label>
 
-        <input id="ch-gratis" type="checkbox" class="chip__input" />
-        <label for="ch-gratis" class="chip chip--filter">Gratis</label>
+          <input id="cat-cultura" type="checkbox" class="chip__input" />
+          <label for="cat-cultura" class="chip chip--filter" data-filter="cultura museos arte historia">
+            <span class="chip3d" data-model="/models/icon_cultura.glb" data-width="56" data-height="40"
+              data-viewheight="6" data-fitbox="4" data-tilt="-25" data-yaw="0" data-amp="0" data-period="5"></span>
+          </label>
 
-        <input id="ch-reserva" type="checkbox" class="chip__input" />
-        <label for="ch-reserva" class="chip chip--filter">Reserva</label>
+          <input id="cat-gratis" type="checkbox" class="chip__input" />
+          <label for="cat-gratis" class="chip chip--filter" data-filter="gratis free 0€">
+            <span class="chip3d" data-model="/models/icon_free.glb" data-width="56" data-height="40" data-viewheight="6"
+              data-fitbox="4" data-tilt="-25" data-yaw="0" data-amp="0" data-period="5"></span>
+          </label>
+
+          <input id="ch-reserva" type="checkbox" class="chip__input" />
+          <label for="ch-reserva" class="chip chip--filter" data-filter="reserva booking">
+            Reserva
+          </label>
+        </div>
       </div>
-
       <!-- Rejilla de bloques de categoría -->
       <section class="cats-grid" aria-label="Listado de categorías">
         <article class="cat-block">
@@ -169,11 +186,13 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-<!-- Portal para modales -->
-<div id="modal-root"></div>
+  <!-- Portal para modales -->
+  <div id="modal-root"></div>
 
-<!-- Modal Auth (carga + eventos globales) -->
-<link rel="stylesheet" href="css/modal.css">
-<script src="/src/js/modal-auth.js" defer></script>
+  <!-- Modal Auth (carga + eventos globales) -->
+  <link rel="stylesheet" href="css/modal.css">
+  <script type="module" src="/src/js/app.js"></script>
+  <script src="/src/js/modal-auth.js" defer></script>
 </body>
+
 </html>
